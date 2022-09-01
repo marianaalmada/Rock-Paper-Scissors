@@ -87,7 +87,7 @@ function game() {
     
     if(player > computer) {
         return "The winner is player!"
-    } else if(computer > player) {
+    } else {
         return "The winner is computer!"
     }
 }
