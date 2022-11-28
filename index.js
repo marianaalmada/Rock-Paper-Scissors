@@ -10,26 +10,28 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
+    const divResult = document.querySelector('#round-result');
 
     if ((computerSelection === "paper") && (playerSelection === "rock")) {
-        console.log(computerSelection);
+        divResult.textContent = 'You lost! Paper beats rock.';
         return false; 
     } else if ((computerSelection === "scissors") && (playerSelection === "rock")) {
-        console.log(computerSelection);
+        divResult.textContent = 'You win! Rock beats scissors.';
         return true; 
     } else if ((computerSelection === "scissors") && (playerSelection === "paper")) {
-        console.log(computerSelection);
+        divResult.textContent = 'You lost! Scissors beats paper.';
         return false; 
     } else if ((computerSelection === "paper") && (playerSelection === "scissors")) {
-        console.log(computerSelection);
+        divResult.textContent = 'You win! Scissors beats paper.';;
         return true; 
     } else if ((computerSelection === "rock") && (playerSelection === "paper")) {
-        console.log(computerSelection);
+        divResult.textContent = 'You win! Paper beats rock.';
         return true; 
     } else if ((computerSelection === "rock") && (playerSelection === "scissors")) {
-        console.log(computerSelection);
+        divResult.textContent = 'You lost! Rock beats scissors.';
         return false; 
     } else if (computerSelection === playerSelection) {
+        divResult.textContent = 'Tie game.';
         return "It's a tie!";
     }
 }
@@ -70,12 +72,15 @@ window.addEventListener('click', (e) => {
 
     const info = document.getElementById('info');
     const result = document.querySelector('#results');
+    const divResult = document.querySelector('#round-result');
 
     if (player === 5) {
         result.textContent = 'You win. Congratulations!';
         info.removeChild(score);
+        info.removeChild(divResult);
     } else if (computer === 5) {
         result.textContent = 'The winner is the Computer.';
         info.removeChild(score);
+        info.removeChild(divResult);
     }
 });
