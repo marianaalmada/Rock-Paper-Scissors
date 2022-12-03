@@ -50,6 +50,15 @@ function selectPlayerChoice(e) {
     }
 }
 
+function removeElements() {
+    const info = document.getElementById('info');
+    const score = document.querySelector('#score');
+    const divResult = document.querySelector('#round-result');
+
+    info.removeChild(score);
+    info.removeChild(divResult);
+}
+
 let player = 0;
 let computer = 0;
 
@@ -60,7 +69,7 @@ window.addEventListener('click', (e) => {
 
     if (playerChoice !== undefined) {
         if (round === "It's a tie!") {
-            console.log('TIE');;
+            console.log('TIE');
         } else if (round) {
             player++;
             score.textContent = 'Player: ' + player + '  Computer: ' + computer;
@@ -70,17 +79,13 @@ window.addEventListener('click', (e) => {
         }  
     }
 
-    const info = document.getElementById('info');
     const result = document.querySelector('#results');
-    const divResult = document.querySelector('#round-result');
 
     if (player === 5) {
         result.textContent = 'You win. Congratulations!';
-        info.removeChild(score);
-        info.removeChild(divResult);
+        setTimeout(removeElements, 3000);
     } else if (computer === 5) {
         result.textContent = 'The winner is the Computer.';
-        info.removeChild(score);
-        info.removeChild(divResult);
+        setTimeout(removeElements, 3000);
     }
 });
