@@ -52,40 +52,44 @@ function selectPlayerChoice(e) {
 
 function removeElements() {
     const info = document.getElementById('info');
-    const score = document.querySelector('#score');
-    const divResult = document.querySelector('#round-result');
+    const score = document.getElementById('score');
+    const divResult = document.getElementById('round-result');
 
     info.removeChild(score);
     info.removeChild(divResult);
 }
 
+const info = document.getElementById('info');
+const playAgainButton = document.createElement('button');
+playAgainButton.textContent = 'PLAY AGAIN';
+
 let player = 0;
 let computer = 0;
 
 window.addEventListener('click', (e) => {
+    const result = document.querySelector('#results');
     const score = document.querySelector('#score');
     const playerChoice = selectPlayerChoice(e.target);
     const round = playRound(playerChoice, getComputerChoice());
 
     if (playerChoice !== undefined) {
-        if (round === "It's a tie!") {
-            console.log('TIE');
+        if (player === 5 || computer === 5 ) {
+            removeElements();
+            info.appendChild(playAgainButton);
+        } else if (round === "It's a tie!") {
+            score.textContent = 'Player: ' + player + '  Computer: ' + computer;
         } else if (round) {
             player++;
             score.textContent = 'Player: ' + player + '  Computer: ' + computer;
         } else if (!round) {
             computer++;
             score.textContent = 'Player: ' + player + '  Computer: ' + computer;
-        }  
+        } 
     }
-
-    const result = document.querySelector('#results');
 
     if (player === 5) {
         result.textContent = 'You win. Congratulations!';
-        setTimeout(removeElements, 3000);
     } else if (computer === 5) {
-        result.textContent = 'The winner is the Computer.';
-        setTimeout(removeElements, 3000);
+        result.textContent = 'The winner is Computer.';
     }
 });
