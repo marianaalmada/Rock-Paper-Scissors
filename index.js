@@ -75,7 +75,7 @@ window.addEventListener('click', (e) => {
     if (playerChoice !== undefined) {
         if (player === 5 || computer === 5 ) {
             removeElements();
-            info.appendChild(playAgainButton);
+            // info.appendChild(playAgainButton);
         } else if (round === "It's a tie!") {
             score.textContent = 'Player: ' + player + '  Computer: ' + computer;
         } else if (round) {
